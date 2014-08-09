@@ -29,35 +29,38 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="span12">
-                <legend>Carreras</legend>
-                <button class="btn" id="create_button">Nueva</button>
-                <table class="table table-bordered">
-                    <tr>
-                        <th>Codigo</th>
-                        <th>Carrera</th>
-                        <th>Botones</th>
-                    </tr>
-                    <tr>
-                        <td>ISW</td>
-                        <td>Ingenieria del Software</td>
-                        <td><a href="" class="btn"><i class="glyphicon glyphicon-pencil"></i> Editar</a><a href="" class="btn"><i class="glyphicon glyphicon-remove-circle"></i> Eliminar</a><a href="" class="btn"><i class="glyphicon glyphicon-search"></i> Ver</a></td>
-                    </tr>
-                    <tr>
-                        <td>COFI</td>
-                        <td>Contabilidad y Finanzas</td>
-                        <td><a href="" class="btn"><i class="glyphicon glyphicon-pencil"></i> Editar</a><a href="" class="btn"><i class="glyphicon glyphicon-remove-circle"></i> Eliminar</a><a href="" class="btn"><i class="glyphicon glyphicon-search"></i> Ver</a></td>
-                    <tr>
-                        <td>ADM</td>
-                        <td>Comercio Exterior</td>
-                        <td><a href="" class="btn"><i class="glyphicon glyphicon-pencil"></i> Editar</a><a href="" class="btn"><i class="glyphicon glyphicon-remove-circle"></i> Eliminar</a><a href="" class="btn"><i class="glyphicon glyphicon-search"></i> Ver</a></td>
-                    </tr>
-                </table>  
+        <div class="container" id="divContenedor">
+            <div id="divAgregar">
+                <form id="frmAgregarContacto">
+                    <fieldset>
+                        <legend><h1>Agregar nueva Carrera</h1></legend>
+                        <label for="txtNombre">Carrera:</label>
+                        <input type="text" id="txtNombre" required autofocus>
+                        <label for="txtTelefono">Codigo:</label>
+                        <input type="text" id="txtTelefono" required>
+                        <input type="submit" value="Agregar">
+                    </fieldset>
+                </form>
             </div>
-        </div>   
-    </div>   
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <div id="divLista">
+                <table class="table table-bordered" id="tblTablaContactos">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Carrera</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- el cuerpo de la tabla sera llenado con JavaScript -->
+                    </tbody>
+                    
+                </table>
+            </div>
+        </div>
+    </div>  
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/ext/jquery-1.8.3.min.js"></script>
+        <script src="js/agenda.js"></script>
   </body>
 </html>

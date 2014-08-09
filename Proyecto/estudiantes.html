@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Estudiantes</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-  </head>
+    <script type="text/javascript" src="js/app.js"></script>
+ </head>
   <body>
     <div class="row-fluid">
         <div class="span12">
@@ -29,34 +30,38 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="span12">
-                <legend>Estudiantes</legend>
-                <button class="btn" id="create_button">Crear Nuevo Estudiante</button>
-                <table class="table table-bordered">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Carrera</th>
-                    </tr>
-                    <tr>
-                        <td>Carlos Salazar</td>
-                        <td>Ingenieria del Software</td>
-                        <td><a href="" class="btn"><i class="glyphicon glyphicon-pencil"></i> Editar</a><a href="" class="btn"><i class="glyphicon glyphicon-remove-circle"></i> Eliminar</a><a href="" class="btn"><i class="glyphicon glyphicon-search"></i> Ver</a></td>
-                    </tr>
-                    <tr>
-                        <td>Gerardo Umaña</td>
-                        <td>Contabilidad y Finanzas</td>
-                        <td><a href="" class="btn"><i class="glyphicon glyphicon-pencil"></i> Editar</a><a href="" class="btn"><i class="glyphicon glyphicon-remove-circle"></i> Eliminar</a><a href="" class="btn"><i class="glyphicon glyphicon-search"></i> Ver</a></td>
-                    <tr>
-                        <td>Sussan Molina</td>
-                        <td>Comercio Exterior</td>
-                        <td><a href="" class="btn"><i class="glyphicon glyphicon-pencil"></i> Editar</a><a href="" class="btn"><i class="glyphicon glyphicon-remove-circle"></i> Eliminar</a><a href="" class="btn"><i class="glyphicon glyphicon-search"></i> Ver</a></td>
-                    </tr>
-                </table>  
+        <div class="container" id="divContenedor">
+            <div id="divAgregar">
+                <form id="frmAgregarContacto">
+                    <fieldset>
+                        <legend><h1>Estudiantes</h1></legend>
+                        <label for="txtNombre">Nombre:</label>
+                        <input type="text" id="txtNombre" required autofocus>
+                        <label for="txtTelefono">Carrera:</label>
+                        <input type="text" id="txtTelefono" required>
+                        <input class="btn" type="submit" value="Agregar">
+                    </fieldset>
+                </form>
             </div>
-        </div>   
-    </div>   
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <div id="divLista">
+                <table class="table table-bordered" id="tblTablaContactos">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Carrera</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- el cuerpo de la tabla sera llenado con JavaScript -->
+                    </tbody>
+                    
+                </table>
+            </div>
+        </div>
+    </div>  
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/ext/jquery-1.8.3.min.js"></script>
+        <script src="js/agenda.js"></script>
   </body>
 </html>
