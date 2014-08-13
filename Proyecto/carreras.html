@@ -30,24 +30,14 @@
             </div>
         </div>
         <div class="container" id="divContenedor">
-            <div id="divAgregar">
-                <form id="frmAgregarContacto">
-                    <fieldset>
-                        <legend><h1>Agregar nueva Carrera</h1></legend>
-                        <label for="txtNombre">Carrera:</label>
-                        <input type="text" id="txtNombre" required autofocus>
-                        <label for="txtTelefono">Codigo:</label>
-                        <input type="text" id="txtTelefono" required>
-                        <input type="submit" value="Agregar">
-                    </fieldset>
-                </form>
-            </div>
+            <legend><h1>Carreras</h1></legend>
+            <a href="nuevaCarrera.html" class="btn"><i class="glyphicon glyphicon-list-alt"></i> Crear nueva Carrera</a>            
             <div id="divLista">
-                <table class="table table-bordered" id="tblTablaContactos">
+                <table class="table table-bordered" id="tblTablacarreras">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
                             <th>Carrera</th>
+                            <th>Codigo</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
@@ -61,6 +51,6 @@
     </div>  
     <script src="js/bootstrap.min.js"></script>
     <script src="js/ext/jquery-1.8.3.min.js"></script>
-        <script src="js/agenda.js"></script>
+    <script src="js/carreras.js"></script>
   </body>
 </html>
