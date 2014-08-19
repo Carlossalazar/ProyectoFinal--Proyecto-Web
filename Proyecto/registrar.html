@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Registrar Usuario</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">	
+	<script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript">
+    function changeText(input_id, new_text) {
+        var el = document.getElementById(input_id);
+        el.value = new_text;
+        my_alert(el.value);
+    }
+    </script>
+</head>	
+<body>
+	<div class="container">
+		<img src="img/imagen.jpg" alt="imagen" class="img-unded">
+		<legend>Registrar Usuario</legend>
+		<div class="wrappers main_content">
+            <div id="table_wrapper"></div>
+            <form action="salvar.php" method="get" name="form_1">
+                <label for="first_name">Nombre</label>
+                <input type="text" size="12" maxlength="10" id="first_name" name="first_name"></input>
+                <br />
+                <label for="last_name" class="required">Apellido</label>
+                <input type="text" id="last_name" name="last_name" class="required"></input>
+                <br />
+                <label for="cedula">Cedula</label>
+                <input type="text" size="12" maxlength="10" id="cedula" name="cedula"></input>
+                <br />
+                <label for="password">Password</label>
+                <input type="password" size="10" maxlength="4" id="password" name="password"></input>
+                <br />
+                <label for="role">Role</label>
+                <select id="role" name="role">
+                    <option value="_"></option>
+                    <option selected="false" value="cr">Admin</option>
+                    <option value="us">Director de Carrera</option>
+                </select>
+                <br />
+            </form>
+            <button id="test_button" type="button" class="btn btn-default"> 
+                <span class="glyphicon glyphicon-floppy-disk"></span> Guardar Registro 
+            </button>
+
+            <button id="delete_button" data-cedula="20569895">Eliminar</button>
+        </div>		
+	</div>
+    <script src="js/ext/jquery-1.8.3.min.js"></script>
+    <script src="js/app.js"></script>
+	<script type="text/javascript">
+        prepareBinding();
+    </script>
+</body>
+</html>

@@ -5,24 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">	
+	<link href="css/bootstrap.min.css" rel="stylesheet">	
+    <script type="text/javascript">
+    function changeText(input_id, new_text) {
+        var el = document.getElementById(input_id);
+        el.value = new_text;
+        my_alert(el.value);
+    }
+    </script>
 </head>	
 <body>
-	<div class="container">
-		<div class="row-fluid">			
+	<div class="container">		
+		<div class="row-fluid">	
 			<div class="centro span12">
 				<img src="img/imagen.jpg" alt="imagen" class="img-unded">
-				<form action="">
+				<div id="table_wrapper"></div>
+				<form action="salvar.php" method="get" name="form_1">
 					<legend>UTN PROFILES</legend>
-					<label for="">Usuario:</label>
-						<input name="txtusuario" type="text" id="txtusuario">
-						<label for="">Password</label>
-						<input name="txtcontra" type="password" id="txtcontra">
-						<br />
-						<input type="button" class="btn" value="Ingresar" onclick = "location='Index.html'"/>
+					<div class="span4">
+					<label for="user_name">Usuario:</label>
+					<input name="txtusuario" type="text" id="txtusuario">
+					<br>
+					<label for="password">Password:</label>
+					<input name="password" type="password" id="password">
+					<br/>
 				</form>				
+				</br>
+				<button type="button" class="btn btn-default" onClick="ir()"> 
+				  	<span class="glyphicon glyphicon-ok"></span> Ingresar 
+				</button>
+				<a href="registrar.html" class="btn"><i class="glyphicon glyphicon-user"></i> Registrar Usuario</a> 	
 			</div>
 		</div>		
 	</div>
+	<script src="js/ext/jquery-1.8.3.min.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>

@@ -10,22 +10,22 @@ $(function(){
 	$.mostrarListaCarreras=function(){
 		//guardamos en una variable la cantidad de carreras y el cuerpo de la
 		//tabla en la que mostraremos la lista (agregando filas con jQuery)
-		var iTotalCarreras=localStorage.length,
-		$objcuerpoTablaCarrera=$('#tblTablacarreras').find('tbody');
+		var itotalUsuarios=localStorage.length,
+		$objcuerpoTablaUsuario=$('#tblTablaUsuarios').find('tbody');
 		
 		//vaciamos el cuerpo de la tabla
-		$objcuerpoTablaCarrera.empty();
+		$objcuerpoTablaUsuario.empty();
 		
 		//Verificamos si hay carreras almacenados?
-		if(iTotalCarreras>0){
+		if(itotalUsuarios>0){
 			//recorremos la lista de carreras (los items almacenados en localStorage)
-			for(var iContacto=0; iContacto<iTotalCarreras; iContacto++){
+			for(var iUsuario=0; iUsuario<itotalUsuarios; iUsuario++){
 				//guardamos en variables los datos recuperados del localStorage
-				var strCodigo=localStorage.key(iContacto),
-				strNombre=localStorage.getItem(localStorage.key(iContacto));
+				var strUsuario=localStorage.key(iUsuario),
+				strRole=localStorage.getItem(localStorage.key(iUsuario));
 			
 				//agregamos una nueva fila con los datos de la carrera
-				$objcuerpoTablaCarrera.append(
+				$objcuerpoTablaUsuario.append(
 					$('<tr>').append(
 						$('<td>',{ //fila para el boton de eliminar
 							align	: 'center',
@@ -36,16 +36,16 @@ $(function(){
 								type	: 'checkbox',
 								class	: 'clsEditar',
 								value	: 'editar',
-							}).data('contactoAEditar',strCodigo, strNombre) //por medio del metodo
+							}).data('contactoAEditar',strUsuario, strRole) //por medio del metodo
 							//data almacenamos en el boton el Codigo de Carrera que debemos eliminar
 							//(esto no sera visible, es un truquillo interesante)
 						),
 						$('<td>',{ //fila con el nombre de la carrera
-							text	: strNombre,
+							text	: strRole,
 							align	: 'left'
 						}),
 						$('<td>',{ //fila con el Codigo de Carrera 
-							text	: strCodigo,
+							text	: strUsuario,
 							align	: 'left'
 						}),	
 						$('<td>',{ //fila para el boton de eliminar
@@ -57,7 +57,7 @@ $(function(){
 								type	: 'button',
 								class	: 'clsGuardar',
 								value	: 'Guardar',
-							}).data('guardarContacto',strCodigo).data('guardarname',strNombre) //por medio del metodo
+							}).data('guardarContacto',strUsuario).data('guardarname',strRole) //por medio del metodo
 							//data almacenamos en el boton el Codigo de Carrera que debemos eliminar
 							//(esto no sera visible, es un truquillo interesante)
 						),					
@@ -70,7 +70,7 @@ $(function(){
 								type	: 'button',
 								class	: 'clsEliminarContacto',
 								value	: 'Eliminar',
-							}).data('contactoAEliminar',strCodigo)//por medio del metodo
+							}).data('contactoAEliminar',strUsuario)//por medio del metodo
 							//data almacenamos en el boton el Codigo de Carrera que debemos eliminar
 							//(esto no sera visible, es un truquillo interesante)
 						)
@@ -80,7 +80,7 @@ $(function(){
 		//no hay carreras almacenados
 		}else{
 			//agregamos una fila con un mensaje indicando que no hay carreras
-			$objcuerpoTablaCarrera.append(
+			$objcuerpoTablaUsuario.append(
 				$('<tr>').append(
 					$('<td>',{
 						text	: 'No se encuentran carreras',
@@ -95,63 +95,65 @@ $(function(){
 	//funcion para limpiar los campos del formulario
 	$.limpiarCamposDelFormulario=function(){
 		//vaciamos el contenido de los campos de texto
-		$('#txtNombre,#txtCodigo').val('');
+		$('#txtRole,#txtNo').val('');
 		//enfocamos el campo para digitar el nombre
-		$('#txtNombre').focus();
+		$('#txtRole').focus();
 	};
 	
 	//evento submit del formulario
-	$('#frmAgregarCarrera').on('submit',function(eEvento){
+	$('#frmAgregarUsuario').on('submit',function(eEvento){
 		//evitamos que el form se envie (para que no recargue la pagina)
 		eEvento.preventDefault();
 		
 		//obtenemos una "copia" de los campos de texto
-		var $txtCodigo=$('#txtCodigo'),$txtNombre=$('#txtNombre');
+		var $txtNo=$('#txtNo'),$txtRole=$('#txtRole');
 		
 		//verificamos que los datos no esten vacios
 		//con $.trim() eliminamos los espacios al final y al inicio de las cadenas
-		if($.trim($txtNombre.val())!='' && $.trim($txtCodigo.val())){
+		if($.trim($txtRole.val())!='' && $.trim($txtNo.val())){
 			//creamos dos variables con el nombre y Codigo que vamos a guardar
-			var strNombre=$.trim($txtNombre.val()),
-			strCodigo=$.trim($txtCodigo.val());
+			var strRole=$.trim($txtRole.val()),
+			strUsuario=$.trim($txtNo.val());
 			
 			//preguntamos si el Codigo de la carrera ya existe
-			if(localStorage.getItem(strCodigo)){
+			if(localStorage.getItem(strUsuario)){
 				//el Codigo existe... desea actualizar?
 				if(confirm('El Codigo ya existe ¿Desea actualizarlo?')){
 					//actualizamos
-					localStorage.setItem(strCodigo,strNombre);
+					localStorage.setItem(strUsuario,strRole);
 					//cargamos en el cuerpo de la tabla la lista de carreras
 					$.mostrarListaCarreras();
 					//limpiamos el formulario
 					$.limpiarCamposDelFormulario();
 					//Direcciona a carrera
-					location.href ="carreras.html";
+					alert('Usuario Creado con Exito.');
+					location.href ="usuarios.html";
 				}
 			//el Codigo no existe
 			}else{
 				//agregamos el contacto al localStorage
-				localStorage.setItem(strCodigo,strNombre);
+				localStorage.setItem(strUsuario,strRole);
 				//cargamos en el cuerpo de la tabla la lista de carreras
 				$.mostrarListaCarreras();
 				//limpiamos el formulario
 				$.limpiarCamposDelFormulario();
 				//Direcciona a carrera
-				location.href ="carreras.html";
+				alert('Usuario Creado con Exito.');
+				location.href ="usuarios.html";
 			}
 		}else{	//en caso de que algun campo este vacio
 			//verificamos si el nombre esta vacio
-			if($.trim($txtNombre.val())==''){
+			if($.trim($txtRole.val())==''){
 				//mostramos un mensaje
 				alert('Por favor, digite el nombre de la carrera.');
 				//enfocamos el campo para el nombre
-				$txtNombre.val('').focus();
+				$txtRole.val('').focus();
 			//verificamos si el Codigo esta vacio
 			}else{
 				//mostramos un mensaje
 				alert('Por favor, digite el Codigo de carreras.');
 				//enfocamos el campo para el Codigo
-				$txtCodigo.val('').focus();
+				$txtNo.val('').focus();
 			}
 		}
 	});
